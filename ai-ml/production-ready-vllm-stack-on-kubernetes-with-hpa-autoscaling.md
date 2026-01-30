@@ -4,15 +4,11 @@
 
 **Published:** November 1, 2025
 
----
-
 ![alt text](./images/production-ready-vllm/image1.png)
 
 Running large language models (LLMs) in production requires careful orchestration of resources, efficient scaling mechanisms, and robust infrastructure. In this guide, I’ll walk you through deploying a multi-model VLLM (Very Large Language Model) stack on Kubernetes with Horizontal Pod Autoscaling (HPA), based on our battle-tested production configuration.
 
 This setup has been successfully managing multiple LLMs from OpenAI, Meta, Qwen, and Google, serving production traffic with automatic scaling based on demand.
-
----
 
 ## Why VLLM?
 
@@ -23,8 +19,6 @@ VLLM is a fast and memory-efficient inference engine designed specifically for L
 - Optimized CUDA kernels for better GPU utilization
 - OpenAI-compatible API endpoints
 
----
-
 ## Architecture Overview
 
 Our production stack consists of three key components:
@@ -32,8 +26,6 @@ Our production stack consists of three key components:
 - **Multiple Model Deployments**: Each LLM runs in its own deployment with dedicated resources and configuration tailored to the model’s requirements.
 - **Router Service**: A lightweight router that distributes incoming requests across model instances and handles load balancing.
 - **Autoscaling Infrastructure**: HPA configuration that scales deployments based on custom Prometheus metrics, specifically monitoring the number of waiting requests.
-
----
 
 ## Prerequisites
 
@@ -45,23 +37,19 @@ Before diving into the deployment, ensure you have:
 - A storage class that supports ReadWriteMany (RWX) access mode
 - Hugging Face tokens for model downloads
 
----
-
 ## Installation Guide
 
 ### Step 1: Add the Repository
 
-```
+```bash
 helm repo add vllm https://vllm-project.github.io/production-stack
 ```
-
----
 
 ### Step 2: Understanding the Configuration
 
 Let me break down the key configuration parameters for each model:
 
-```
+```yaml
 - name: "gptoss-20b"
   repository: "vllm/vllm-openai" # VLLM image supporting your model
   tag: "latest"
@@ -75,15 +63,13 @@ Let me break down the key configuration parameters for each model:
     - ReadWriteMany # Critical for fast scaling!
 ```
 
-**Important Note**: Using `ReadWriteMany` (RWX) access mode is crucial when HPA is enabled. This allows multiple pods to mount the same persistent volume simultaneously, dramatically reducing scaling time since new pods don't need to re-download the model weights.
-
----
+> **Note**: Using `ReadWriteMany` (RWX) access mode is crucial when HPA is enabled. This allows multiple pods to mount the same persistent volume simultaneously, dramatically reducing scaling time since new pods don't need to re-download the model weights.
 
 ### Step 3: VLLM Configuration Deep Dive
 
 Each model has specific VLLM runtime configurations:
 
-```
+```yaml
 vllmConfig:
   enableChunkedPrefill: false
   enablePrefixCaching: false
@@ -98,15 +84,11 @@ vllmConfig:
 - `tensorParallelSize`: For larger models requiring multiple GPUs (e.g., 120B model uses 4 GPUs)
 - `maxModelLen`: Context window size, adjust based on your use case
 
----
-
 ### Step 4: Autoscaling Configuration
 
 Please refer to keda autoscaling guide for HPA:
 
 https://docs.vllm.ai/projects/production-stack/en/latest/use_cases/autoscaling-keda.html
-
----
 
 ## Production Model Examples
 
@@ -114,7 +96,7 @@ https://docs.vllm.ai/projects/production-stack/en/latest/use_cases/autoscaling-k
 
 Ideal for cost-effective inference with good performance:
 
-```
+```yaml
 - name: "meta-llama-31-8b-instruct"
   repository: "vllm/vllm-openai"
   tag: "latest"
@@ -134,7 +116,7 @@ Ideal for cost-effective inference with good performance:
 
 For high-quality outputs requiring significant compute:
 
-```
+```yaml
 - name: "gptoss-120b"
   repository: "vllm/vllm-openai"
   tag: "latest"
@@ -154,7 +136,7 @@ For high-quality outputs requiring significant compute:
 
 Perfect for semantic search and RAG applications:
 
-```
+```yaml
 - name: "qwen3-embedding-8b"
   repository: "vllm/vllm-openai"
   tag: "latest"
@@ -174,7 +156,7 @@ Perfect for semantic search and RAG applications:
 
 Audio-visual-text multimodal model with custom CUDA image:
 
-```
+```yaml
 - name: "qwen3-omni"
   repository: "qwenllm/qwen3-omni" # Custom repository
   tag: "3-cu124" # CUDA 12.4 optimized
@@ -195,7 +177,7 @@ Audio-visual-text multimodal model with custom CUDA image:
 
 Specialized for complex reasoning tasks:
 
-```
+```yaml
 - name: "llm360-k2-think"
   repository: "vllm/vllm-openai"
   tag: "v0.10.1.1" # Specific version for compatibility
@@ -216,7 +198,7 @@ Specialized for complex reasoning tasks:
 
 Large-scale multimodal reasoning model:
 
-```
+```yaml
 - name: "qwen3-thinking"
   repository: "vllm/vllm-openai"
   tag: "latest"
@@ -236,7 +218,7 @@ Large-scale multimodal reasoning model:
 
 High-performance multimodal instruction-following model:
 
-```
+```yaml
 - name: "qwen3-instruct"
   repository: "vllm/vllm-openai"
   tag: "latest"
@@ -252,13 +234,11 @@ High-performance multimodal instruction-following model:
     extraArgs: ["--disable-log-requests", "--gpu-memory-utilization", "0.9"]
 ```
 
----
-
 ## Router Configuration
 
 The router handles incoming traffic and distributes it across model instances:
 
-```
+```yaml
 routerSpec:
   replicaCount: 1
   autoscaling:
@@ -276,13 +256,11 @@ routerSpec:
 
 The router is lightweight and scales independently based on CPU utilization.
 
----
-
 ## Deployment
 
 ### Deploy the Stack
 
-```
+```bash
 helm install vllm vllm -f prod-values.yaml -n vllm --install --create-namespace
 ```
 
@@ -290,35 +268,33 @@ helm install vllm vllm -f prod-values.yaml -n vllm --install --create-namespace
 
 Check your pods:
 
-```
+```bash
 kubectl get pods -n vllm
 ```
 
 Expected output:
 
-```
-NAME READY STATUS RESTARTS AGE
-vllm-deployment-router-5bc8f96685-284m4 1/1 Running 0 8d
-vllm-gemma-3-27b-it-deployment-vllm-9d9f8b554-cdlvj 1/1 Running 2 8d
-vllm-gptoss-120b-deployment-vllm-d75bdcc7f-zprkb 1/1 Running 6 7d
-vllm-qwen3-omni-deployment-vllm-85bfc6dfc7-jb59f 1/1 Running 0 26h
+```console
+NAME                                                  READY   STATUS    RESTARTS   AGE
+vllm-deployment-router-5bc8f96685-284m4               1/1     Running   0          8d
+vllm-gemma-3-27b-it-deployment-vllm-9d9f8b554-cdlvj   1/1     Running   2          8d
+vllm-gptoss-120b-deployment-vllm-d75bdcc7f-zprkb      1/1     Running   6          7d
+vllm-qwen3-omni-deployment-vllm-85bfc6dfc7-jb59f      1/1     Running   0          26h
 ```
 
 Check HPA status:
 
-```
+```bash
 kubectl get hpa -n vllm
 ```
 
 Expected output:
 
+```console
+NAME                   REFERENCE                                    TARGETS         MINPODS   MAXPODS   REPLICAS
+vllm-gptoss-120b-hpa   Deployment/vllm-gptoss-120b-deployment-vllm  0/20            1         2         1
+vllm-router-hpa        Deployment/vllm-deployment-router            cpu: 2%/80%     3         10        3
 ```
-NAME REFERENCE TARGETS MINPODS MAXPODS REPLICAS
-vllm-gptoss-120b-hpa Deployment/vllm-gptoss-120b-deployment-vllm 0/20 1 2 1
-vllm-router-hpa Deployment/vllm-deployment-router cpu: 2%/80% 3 10 3
-```
-
----
 
 ## Best Practices and Lessons Learned
 
@@ -362,8 +338,6 @@ Key metrics to watch:
 3. **Aggressive scale-to-zero**: Consider scaling to zero replicas during off-peak hours
 4. **Batch requests**: VLLM’s continuous batching is most efficient with multiple concurrent requests
 
----
-
 ## Conclusion
 
 Running a production VLLM stack requires careful attention to resource allocation, storage configuration, and autoscaling policies. The configuration shared here has proven stable and cost-effective for serving multiple models under varying load conditions.
@@ -377,15 +351,3 @@ Running a production VLLM stack requires careful attention to resource allocatio
 - Leave GPU memory headroom for stability
 
 This setup has been serving production traffic reliably for weeks, automatically handling traffic spikes and optimizing resource usage during quiet periods.
-
----
-
-## Next Steps
-
-- Implement request queuing and prioritization
-- Integrate with litellm for router optimization and token metering
-- Add model caching for frequently accessed weights
-- Set up comprehensive monitoring dashboards
-- Implement blue-green deployments for model updates
-- Explore multi-cluster deployments for high availability
-

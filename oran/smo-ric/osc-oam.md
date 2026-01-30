@@ -28,48 +28,48 @@ Below is a snapshot of the kubernetes pods that together form a functional SMO/O
 
 ![oam k8s environment](./images/osc-oam/k8s-ecosystem.png)
 
-```bash
+```console
 ubuntu@ubuntu:~/o1-adapter$ kubectl get pods -A
-NAMESPACE          NAME                                                READY   STATUS      RESTARTS       AGE
-cert-manager       cert-manager-5bd57786d4-vcdxb                       1/1     Running     0              3h32m
-cert-manager       cert-manager-cainjector-57657d5754-94vl4            1/1     Running     0              3h32m
-cert-manager       cert-manager-webhook-7d9f8748d4-j956r               1/1     Running     0              3h32m
-ingress-nginx      ingress-nginx-admission-create-f8wnm                0/1     Completed   0              3h32m
-ingress-nginx      ingress-nginx-admission-patch-crqqj                 0/1     Completed   3              3h32m
-ingress-nginx      ingress-nginx-controller-65d6d978b-87kpg            1/1     Running     0              3h32m
-kube-system        calico-kube-controllers-6b78c44475-v86sb            1/1     Running     0              3h32m
-kube-system        canal-wvvb7                                         2/2     Running     0              3h32m
-kube-system        coredns-5cd5577cc9-7gq6t                            1/1     Running     0              3h32m
-kube-system        coredns-5cd5577cc9-tcr26                            1/1     Running     0              3h32m
-kube-system        etcd-ubuntu                                         1/1     Running     0              3h33m
-kube-system        kube-apiserver-ubuntu                               1/1     Running     0              3h33m
-kube-system        kube-controller-manager-ubuntu                      1/1     Running     0              3h32m
-kube-system        kube-proxy-x7brv                                    1/1     Running     0              3h32m
-kube-system        kube-scheduler-ubuntu                               1/1     Running     0              3h33m
-kube-system        metrics-server-74fbf9b9b4-xcd5j                     1/1     Running     0              3h32m
-kube-system        node-local-dns-gf7t6                                1/1     Running     0              3h32m
-mariadb-operator   mariadb-operator-844954c944-pnclh                   1/1     Running     0              3h25m
-mariadb-operator   mariadb-operator-cert-controller-769886898b-fqxc2   1/1     Running     0              3h25m
-mariadb-operator   mariadb-operator-webhook-6768b6799d-2sgxz           1/1     Running     0              3h25m
-onap               mariadb-galera-0                                    1/1     Running     0              3h22m
-onap               onap-chartmuseum-7bc565d46-jnt47                    1/1     Running     0              3h21m
-onap               onap-dcae-datafile-collector-54fb56f757-ckfmf       1/1     Running     0              3h21m
-onap               onap-dcae-ms-healthcheck-d7cf866bb-2ntqz            1/1     Running     0              3h21m
-onap               onap-dcae-pm-mapper-9f5b6fc74-qggjd                 1/1     Running     0              3h21m
-onap               onap-dcae-ves-collector-5f57dcb588-9f4d8            1/1     Running     0              3h21m
-onap               onap-dcae-ves-mapper-5dcc6dd778-h2fr2               1/1     Running     0              3h21m
-onap               onap-dmaap-dr-mariadb-init-config-job-vrrd7         0/1     Completed   0              3h21m
-onap               onap-dmaap-dr-node-0                                1/1     Running     0              3h21m
-onap               onap-dmaap-dr-prov-66bf788f8-8scnn                  1/1     Running     0              3h21m
-onap               onap-message-router-0                               2/2     Running     0              111m
-onap               onap-robot-5c748c57d9-5dp5m                         1/1     Running     0              3h21m
-onap               onap-sdnc-0                                         1/1     Running     0              3h21m
-onap               onap-sdnc-sdnrdb-init-job-p4bjt                     0/1     Completed   0              3h21m
-onap               onap-sdnc-web-6cf9547dbd-hlqdd                      1/1     Running     0              3h21m
-onap               onap-strimzi-entity-operator-5b46c475d4-ln8nb       2/2     Running     0              3h22m
-onap               onap-strimzi-kafka-0                                1/1     Running     0              3h22m
-onap               onap-strimzi-zookeeper-0                            1/1     Running     0              3h23m
-strimzi-system     strimzi-cluster-operator-585f6fd995-dfts5           1/1     Running     2 (119m ago)   3h26m
+NAMESPACE           NAME                                                  READY   STATUS      RESTARTS        AGE
+cert-manager        cert-manager-5bd57786d4-vcdxb                         1/1     Running     0               3h32m
+cert-manager        cert-manager-cainjector-57657d5754-94vl4              1/1     Running     0               3h32m
+cert-manager        cert-manager-webhook-7d9f8748d4-j956r                 1/1     Running     0               3h32m
+ingress-nginx       ingress-nginx-admission-create-f8wnm                  0/1     Completed   0               3h32m
+ingress-nginx       ingress-nginx-admission-patch-crqqj                   0/1     Completed   3               3h32m
+ingress-nginx       ingress-nginx-controller-65d6d978b-87kpg              1/1     Running     0               3h32m
+kube-system         calico-kube-controllers-6b78c44475-v86sb              1/1     Running     0               3h32m
+kube-system         canal-wvvb7                                           2/2     Running     0               3h32m
+kube-system         coredns-5cd5577cc9-7gq6t                              1/1     Running     0               3h32m
+kube-system         coredns-5cd5577cc9-tcr26                              1/1     Running     0               3h32m
+kube-system         etcd-ubuntu                                           1/1     Running     0               3h33m
+kube-system         kube-apiserver-ubuntu                                 1/1     Running     0               3h33m
+kube-system         kube-controller-manager-ubuntu                        1/1     Running     0               3h32m
+kube-system         kube-proxy-x7brv                                      1/1     Running     0               3h32m
+kube-system         kube-scheduler-ubuntu                                 1/1     Running     0               3h33m
+kube-system         metrics-server-74fbf9b9b4-xcd5j                       1/1     Running     0               3h32m
+kube-system         node-local-dns-gf7t6                                  1/1     Running     0               3h32m
+mariadb-operator    mariadb-operator-844954c944-pnclh                     1/1     Running     0               3h25m
+mariadb-operator    mariadb-operator-cert-controller-769886898b-fqxc2     1/1     Running     0               3h25m
+mariadb-operator    mariadb-operator-webhook-6768b6799d-2sgxz             1/1     Running     0               3h25m
+onap                mariadb-galera-0                                      1/1     Running     0               3h22m
+onap                onap-chartmuseum-7bc565d46-jnt47                      1/1     Running     0               3h21m
+onap                onap-dcae-datafile-collector-54fb56f757-ckfmf         1/1     Running     0               3h21m
+onap                onap-dcae-ms-healthcheck-d7cf866bb-2ntqz              1/1     Running     0               3h21m
+onap                onap-dcae-pm-mapper-9f5b6fc74-qggjd                   1/1     Running     0               3h21m
+onap                onap-dcae-ves-collector-5f57dcb588-9f4d8              1/1     Running     0               3h21m
+onap                onap-dcae-ves-mapper-5dcc6dd778-h2fr2                 1/1     Running     0               3h21m
+onap                onap-dmaap-dr-mariadb-init-config-job-vrrd7           0/1     Completed   0               3h21m
+onap                onap-dmaap-dr-node-0                                  1/1     Running     0               3h21m
+onap                onap-dmaap-dr-prov-66bf788f8-8scnn                    1/1     Running     0               3h21m
+onap                onap-message-router-0                                 2/2     Running     0               111m
+onap                onap-robot-5c748c57d9-5dp5m                           1/1     Running     0               3h21m
+onap                onap-sdnc-0                                           1/1     Running     0               3h21m
+onap                onap-sdnc-sdnrdb-init-job-p4bjt                       0/1     Completed   0               3h21m
+onap                onap-sdnc-web-6cf9547dbd-hlqdd                        1/1     Running     0               3h21m
+onap                onap-strimzi-entity-operator-5b46c475d4-ln8nb         2/2     Running     0               3h22m
+onap                onap-strimzi-kafka-0                                  1/1     Running     0               3h22m
+onap                onap-strimzi-zookeeper-0                              1/1     Running     0               3h23m
+strimzi-system      strimzi-cluster-operator-585f6fd995-dfts5             1/1     Running     2 (119m ago)    3h26m
 ```
 
 The pods described above can be logically grouped into functional layers:
@@ -85,7 +85,6 @@ The pods described above can be logically grouped into functional layers:
 The heart of the configuration management capability in the SMO is the SDN Controller. In the OSC distribution, this is a specific instantiation of the ONAP SDNC, which is itself built upon the OpenDaylight (ODL) platform.
 
 - The primary function of the SDNC in the O1 context is to act as the **NETCONF Client**. It maintains persistent Secure Shell (SSH) or TLS connections to the southbound managed elements (O-DUs, O-CUs). Through these connections, it performs the following critical operations:
-
   - **Capability Discovery**: During the NETCONF "Hello" exchange, the SDNC discovers which YANG modules are supported by the device.
   - **Configuration Push**: It translates high-level network intents into `edit-config` RPC calls to modify the device's (DU, CU) running configuration.
   - **Synchronization**: It periodically issues `get-config` calls to ensure its internal view of the network matches the actual device state.
@@ -243,7 +242,7 @@ Some example operational and data workflows within the OSC OAM/SMO environment a
 
 Example, `pnfRegistration` event payload sent by the OAI O1 Adapter:
 
-```bash
+```json
 "event": {
         "commonEventHeader": {
             "domain": "pnfRegistration",

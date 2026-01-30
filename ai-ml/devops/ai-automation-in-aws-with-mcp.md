@@ -26,13 +26,13 @@ This architecture means you can give Qwen a high-level goal in natural language,
 
 The first step was to configure Qwen to use our three AWS-focused MCP servers. I started by checking the current setup.
 
-```shell
+```bash
 qwen mcp list
 ```
 
 As expected, it returned “No MCP servers configured.” I then applied a pre-configured settings file to connect Qwen to the servers.
 
-```shell
+```bash
 mkdir -p /root/.qwen
 cp /root/settings.json /root/.qwen/settings.json
 ```

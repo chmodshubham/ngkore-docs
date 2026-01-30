@@ -27,7 +27,7 @@ This structure allowed me to manage the incident strategically, focusing on the 
 
 Before diving into the production fire, the first step was to ensure my AI team was online and ready. I ran a quick check to list the installed agents and verify the connection to our Plane ticketing system.
 
-```shell
+```bash
 # Verify available agents
 qwen --prompt "List installed agents" 2>/dev/null
 # Test Plane MCP Integration
@@ -42,7 +42,7 @@ The system confirmed three agents were active (cloud-architect, kubernetes-speci
 
 The most critical issue was the application downtime caused by the crashing pods. I navigated to the relevant directory and delegated the problem to our Kubernetes expert.
 
-```shell
+```bash
 cd /root/k8s-incident
 qwen -y 2>/dev/null
 ```
@@ -82,7 +82,7 @@ Think of Terraform code as the official architectural blueprint for a house. Dri
 
 This is precisely the problem our cloud-architect agent was designed to solve: to programmatically detect this drift, report on it, and bring our infrastructure back into alignment with our code.
 
-```shell
+```bash
 cd /root/terraform-static-site
 qwen -y 2>/dev/null
 ```

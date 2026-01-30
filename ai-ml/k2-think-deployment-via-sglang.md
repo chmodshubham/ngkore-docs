@@ -18,7 +18,7 @@ Let’s start with the prerequisites:
 
 - A K8s cluster installed with Nvidia GPU Operator
 
-```bash
+```console
 NAMESPACE         NAME                                                              READY   STATUS      RESTARTS      AGE
 cert-manager      cert-manager-5969544f77-pmrt7                                     1/1     Running     0             9d
 cert-manager      cert-manager-cainjector-65967ff5cc-tbntm                          1/1     Running     0             9d
@@ -113,7 +113,7 @@ prometheus        prometheus-prometheus-node-exporter-j4tjb
 
 - Storage class configured
 
-```bash
+```console
 kubectl get sc
 NAME                 PROVISIONER             RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
 local-path           rancher.io/local-path   Delete          WaitForFirstConsumer   true                   13d
