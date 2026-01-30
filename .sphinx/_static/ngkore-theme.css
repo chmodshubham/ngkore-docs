@@ -45,9 +45,9 @@
   font-weight: 600;
 }
 
-/* Style buttons and interactive elements */
+/* Style buttons and interactive elements - exclude UI control buttons */
 .btn,
-button,
+button:not(.copybtn):not(.theme-toggle-icon):not(.back-to-top):not(.sidebar-toggle):not([aria-label]):not(.sphinx-tabs-tab),
 input[type="submit"] {
   background: linear-gradient(
     135deg,
@@ -96,49 +96,38 @@ table.docutils {
 }
 
 table.docutils th {
-  background: linear-gradient(
-    135deg,
-    var(--ngkore-primary),
-    var(--ngkore-secondary)
-  );
+  background: var(--ngkore-primary);
   color: white;
 }
 
 /* Keep original navigation breadcrumbs styling */
 
-/* Style back to top button */
+/* Style back to top button - transparent */
 .back-to-top {
-  background: white;
-  color: var(--ngkore-bg-primary);
-  border-radius: 40%;
+  background: transparent !important;
+  color: var(--color-foreground-secondary);
+  border-radius: 50%;
   transition: all 0.3s ease;
-  /* align-items: center; */
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .back-to-top:hover {
-  background: white;
-  color: var(--ngkore-bg-primary);
-  /* transform: scale(1.05); */
+  background: rgba(0, 0, 0, 0.05) !important;
+  color: var(--color-foreground-primary);
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 /* Dark theme support for back to top button */
 body[data-theme="dark"] .back-to-top {
-  background: linear-gradient(
-    135deg,
-    var(--ngkore-primary),
-    var(--ngkore-secondary)
-  );
-  color: white;
+  background: transparent !important;
+  color: var(--color-foreground-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 body[data-theme="dark"] .back-to-top:hover {
-  background: linear-gradient(
-    135deg,
-    var(--ngkore-secondary),
-    var(--ngkore-primary)
-  );
-  color: white;
-  /* transform: scale(1.05); */
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: var(--color-foreground-primary);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Style theme toggle button */

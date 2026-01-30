@@ -1,28 +1,47 @@
 # NgKore Documentation
 
-NgKore (_ngkorefoundation.org_) is an open-source community driving innovation across Post-Quantum Cryptography (PQC), eBPF, 5G Advanced, 6G, O-RAN, NTN, AI/ML, Blockchain, Quantum technologies, and Cloud-Native Architectures.
+## Overview
 
-## Focus Areas
+NgKore Foundation (_ngkorefoundation.org_) is an open-source community advancing research and development in next-generation network infrastructure, quantum-resistant cryptography, and cloud-native architectures. The foundation focuses on bridging academic research with production-ready implementations across telecommunications, distributed systems, and emerging network technologies.
 
-**Core Technologies**
+## Technical Domains
 
-- {doc}`5G Core Networks <5g-core/index>` - Next-generation mobile networks
-- {doc}`O-RAN Interoperability <oran/index>` - Open radio access networks
+### Network Infrastructure
 
-**Security & Cryptography**
+{doc}`5G Core Networks <5g-core/index>`
+: Standards-compliant 5G core network implementations, service-based architecture, and network function virtualization.
 
-- {doc}`Post-Quantum Cryptography <pqc/index>` - Future-proof encryption
-- {doc}`Network Security <security/index>` - Advanced protection mechanisms
+{doc}`O-RAN Interoperability <oran/index>`
+: Open radio access network specifications, intelligent RAN controllers, and vendor-neutral interfaces.
 
-**Emerging Technologies**
+{doc}`Non-Terrestrial Networks <ntn/index>`
+: Satellite communications, aerial connectivity platforms, and hybrid terrestrial-non-terrestrial network architectures.
 
-- {doc}`AI/ML Integration <ai-ml/index>` - Intelligent network automation
-- {doc}`Non-Terrestrial Networks <ntn/index>` - Satellite and aerial connectivity
+### Security & Cryptography
 
-**Tools & Orchestration**
+{doc}`Post-Quantum Cryptography <pqc/index>`
+: Quantum-resistant algorithms, lattice-based cryptography, and migration strategies for post-quantum security.
 
-- {doc}`eBPF Technology & Tools <ebpf/index>` - High-performance packet processing
-- {doc}`Kernel Bypass Technologies <kernel-bypass/index>` - Ultra-low latency networking
+{doc}`Network Security <security/index>`
+: Advanced threat detection, zero-trust architectures, and secure network function implementations.
+
+### Performance & Optimization
+
+{doc}`eBPF Technology & Tools <ebpf/index>`
+: Extended Berkeley Packet Filter for programmable packet processing, observability, and security enforcement.
+
+{doc}`Kernel Bypass Technologies <kernel-bypass/index>`
+: DPDK, XDP, and user-space networking for ultra-low latency data plane operations.
+
+### Intelligent Systems
+
+{doc}`AI/ML Integration <ai-ml/index>`
+: Machine learning for network optimization, predictive analytics, and autonomous network management.
+
+### Practical Implementation
+
+{doc}`Tutorials <tutorials/index>`
+: Step-by-step deployment guides, integration examples, and reference architectures.
 
 ---
 

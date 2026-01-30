@@ -25,7 +25,7 @@ The deployment follows a **3GPP-aligned CU/DU architecture** and is suitable for
 
 ## High-Level Architecture
 
-```
+```console
                  +-----------------------------+
                  |           VM 1              |
                  |                             |
