@@ -4,7 +4,7 @@
 }
 
 .p-navigation__nav {
-  background: linear-gradient(135deg, #6B9BD1 0%, #4A90E2 100%);
+  background: #1b3a5f;
   display: flex;
   font-family: var(--font-stack);
   padding: 0.05rem 0;
@@ -81,7 +81,7 @@ ul.p-navigation__links li a {
   position: relative;
   text-align: left;
   text-overflow: ellipsis;
-  transition-duration: .1s;
+  transition-duration: 0.1s;
   transition-property: background-color, color, opacity;
   transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   white-space: nowrap;
@@ -110,7 +110,7 @@ ul.p-navigation__links .p-dropdown__link:hover {
 
 ul.p-navigation__links .p-navigation__sub-link {
   background: var(--color-background-primary);
-  padding: .5rem 0 .5rem .5rem;
+  padding: 0.5rem 0 0.5rem 0.5rem;
   font-weight: 300;
 }
 

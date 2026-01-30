@@ -163,7 +163,7 @@ The deployment may take time as it pulls several large images. Open a separate t
 kubectl get pods -A
 ```
 
-```bash
+```console
 ubuntu@ubuntu:~/o1-adapter$ kubectl get pods -A
 NAMESPACE          NAME                                                READY   STATUS      RESTARTS       AGE
 cert-manager       cert-manager-5bd57786d4-vcdxb                       1/1     Running     0              3h32m

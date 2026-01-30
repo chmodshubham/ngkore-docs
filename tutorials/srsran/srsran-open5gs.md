@@ -24,7 +24,7 @@ This setup is intended for **testing, learning, and research**, and runs entirel
 
 ## Architecture Overview
 
-```
+```console
 +-----------------------------+
 |        Ubuntu 22.04 VM      |
 |                             |

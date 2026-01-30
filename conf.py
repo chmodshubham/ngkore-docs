@@ -127,6 +127,7 @@ html_static_path = ['.sphinx/_static']
 
 html_css_files = [
     'custom.css',
+    'header.css',
     'github_issue_links.css',
     'furo_colors.css',
     'bottom-logo.css'
