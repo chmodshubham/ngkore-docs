@@ -31,7 +31,7 @@ This means we are not building a complex application or spinning up a new contai
 
 The first step was to “hire” my new team members by installing their agent files. A simple setup script handled the installation
 
-```shell
+```bash
 bash /root/setup-agents.sh
 ```
 
@@ -74,7 +74,7 @@ The new Dockerfile used a multi-stage build, switched to a slim Python base imag
 
 With the docker-optimized agent's work complete, it was time for the moment of truth. I built the new, optimized Docker image using the agent-generated Dockerfile.optimized
 
-```shell
+```bash
 docker build -f /root/production-issues/bad-docker/Dockerfile.optimized
 -t my-app:optimized /root/production-issues/bad-docker/
 Press enter or click to view image in full size
@@ -87,7 +87,7 @@ The build completed successfully, installing only the necessary dependencies and
 
 When I checked the final image size:
 
-```shell
+```bash
 docker images | grep my-app
 
 ```

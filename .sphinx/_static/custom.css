@@ -150,6 +150,21 @@ code.literal {
     line-height: 1.5;
     font-size: 0.9rem;
     overflow-x: auto;
+    white-space: pre !important;
+}
+
+/* Ensure code blocks preserve whitespace */
+pre, code.highlight pre, div.highlight pre {
+    white-space: pre !important;
+}
+
+/* Specific override for console/text code blocks */
+.highlight-console pre,
+.highlight-text pre,
+.highlight-none pre {
+    white-space: pre !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    tab-size: 4;
 }
 
 /** Enhanced image styling **/

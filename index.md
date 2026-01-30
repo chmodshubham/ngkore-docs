@@ -40,6 +40,7 @@ ai-ml/index
 security/index
 kernel-bypass/index
 ntn/index
+tutorials/index
 how-to-contribute
 repository-conventions
 ```

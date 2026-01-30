@@ -4,9 +4,8 @@
 
 **Published:** Nov 15, 2025
 
-*What happened when I watched the smartest security engineers in the world realize they don’t know what to do about AI-generated code*
+*What happened when I watched the smartest security engineers in the world realize they don't know what to do about AI-generated code*
 
----
 ![](./images/ai-code-openssl/openssl-conference.jpg)
 
 In a conference room in Prague sat some of the most experienced security engineers in the world — people who maintain OpenSSL, the people whose code encrypts your bank transactions, your medical records, and every password you’ve ever typed. They’ve seen every nightmare scenario: buffer overflows that crashed servers worldwide, Heartbleed, and timing attacks so subtle they took years to discover. These people have forgotten more about security than most of us will ever learn, and in 2025 they were genuinely unsure whether AI-generated code should ever touch their codebase.
@@ -250,5 +249,4 @@ You can ship features faster with AI. Prototype more quickly. Explore more ideas
 * Can LLMs Generate Correct and Secure Backends? (Vero et al., 2025): [arXiv 2502.11844](https://arxiv.org/abs/2502.11844)
 * Prompting Techniques for Secure Code Generation (Tony et al.): [arXiv 2407.07064](https://arxiv.org/abs/2407.07064)
 
----
 > *Now go fix your security practices before AI breaks them for you.*

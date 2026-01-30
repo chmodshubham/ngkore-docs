@@ -29,8 +29,6 @@ go install github.com/cilium/ebpf/cmd/bpf2go@latest
 
 _Reference code/build guide repo: [GitHub - eBPF Process Monitor](https://github.com/Satyam-git-hub/eBPF_process_monitor.git)_
 
----
-
 ## 1. Writing the eBPF Program
 
 Create a project directory and source file:

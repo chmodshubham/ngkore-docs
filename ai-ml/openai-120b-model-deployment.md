@@ -21,7 +21,7 @@ This guide will walk you through the deployment of OpenAI OSS Models
 
 Make sure you have a K8s cluster with NVidia GPU operator installed:
 
-```bash
+```console
 NAME                                                           READY   STATUS      RESTARTS       AGE
 gpu-feature-discovery-v2xpk                                    1/1     Running     0              4d8h
 gpu-operator-644fb64985-ffzws                                  1/1     Running     0              4d8h
@@ -381,4 +381,4 @@ spec:
 
 ### Reference
 
-- https://openai.com/index/introducing-gpt-oss/
+- <https://openai.com/index/introducing-gpt-oss/>
